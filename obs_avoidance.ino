@@ -33,6 +33,11 @@ void setup() {
   pinMode(in2, OUTPUT);
   pinMode(in3, OUTPUT);
   pinMode(in4, OUTPUT);
+
+  pinMode(pinA, OUTPUT); //pinA pinB controls the vaccum cleaning part of the bot
+  pinMode(pinB, OUTPUT);
+  digitalWrite(pinA, HIGH);// relays, therefore active LOW
+  digitalWrite(pinB, HIGH);
   
   pinMode(autoPin, INPUT_PULLUP);
   pinMode(manualPin, INPUT_PULLUP);
@@ -54,14 +59,14 @@ void setup() {
 }
 
 void loop() {
+      digitalWrite(pinA, HIGH);//ACTIVE LOW
+      digitalWrite(pinB, LOW);
+      delay(3000);
+      digitalWrite(pinA, HIGH);
+      digitalWrite(pinB, HIGH);
+      delay(1000);
       digitalWrite(pinA, LOW);
       digitalWrite(pinB, HIGH);
-      delay(3000);
-      digitalWrite(pinA, LOW);
-      digitalWrite(pinB, LOW);
-      delay(1000);
-      digitalWrite(pinA, HIGH);
-      digitalWrite(pinB, LOW);
       delay(3000);
 
 if (digitalRead(autoPin)==HIGH){
